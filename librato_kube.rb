@@ -56,7 +56,7 @@ def send_node_stats(node_ip)
       metrics_queue.add "kube.cpu.usage_ms" => { type: :counter, value: cpu_ms, source: source_name }
     end
     
-    if status['memory']
+    if stats['memory']
       metrics_queue.add "kube.memory.usage" => { value: stats['memory']['usage'], source: source_name }
       metrics_queue.add "kube.memory.rss"   => { value: stats['memory']['working_set'], source: source_name }
     end
