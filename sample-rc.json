@@ -1,0 +1,42 @@
+{
+	"kind": "ReplicationController",
+	"apiVersion": "v1",
+	"metadata": {
+		"name": "librato-kube-metrics"
+	},
+	"spec": {
+		"replicas": 1,
+		"selector": {
+			"app": "librato-kube-metrics"
+		},
+		"template": {
+			"metadata": {
+				"labels": {
+					"app": "librato-kube-metrics"
+				}
+			},
+			"spec": {
+				"containers": [{
+					"name": "bash",
+					"image": "quay.io/bkoski/librato-kube-cadvisor:latest",
+					"env": [{
+						"name": "KUBE_API_ENDPOINT",
+						"value": "https://kubernetes-controller.company.com/api/"
+					}, {
+						"name": "CONTEXT",
+						"value": "prd"
+					}, {
+						"name": "LIBRATO_EMAIL",
+						"value": "librato@company.com"
+					}, {
+						"name": "LIBRATO_API_KEY",
+						"value": "****"
+					}],
+					"resources": {},
+					"terminationMessagePath": "/dev/termination-log",
+					"imagePullPolicy": "IfNotPresent"
+				}]
+			}
+		}
+	}
+}
