@@ -10,3 +10,8 @@ Perhaps someday there will be a librato [sink in heapster](https://github.com/ku
   * `LIBRATO_API_KEY`
   * `CONTEXT` - this is prefixed to stats sent to librato
   * `KUBE_API_ENDPOINT`
+
+
+### Deployment
+
+Tweak the [sample replication controller](https://github.com/bkoski/librato-kube-cadvisor/blob/master/sample-rc.json), and submit it to your kubernetes cluster.
